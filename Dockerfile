@@ -22,8 +22,5 @@ COPY --from=build /app/dist /usr/share/nginx/html
 # Replace default nginx config with SPA-friendly one
 COPY nginx.conf /etc/nginx/conf.d/default.conf
 
-# Healthcheck (optional)
-HEALTHCHECK --interval=30s --timeout=3s CMD wget -qO- http://localhost:80/ || exit 1
-
 EXPOSE 80
 CMD ["nginx", "-g", "daemon off;"]
