@@ -1,0 +1,25 @@
+version: "3.8"
+services:
+  ad-deploy-pro:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: ad-deploy-pro-99:latest
+    container_name: ad-deploy-pro
+    # Simple port mapping (no Traefik)
+    ports:
+      - "8080:80"
+    # If you prefer Traefik, comment 'ports' above and uncomment labels+networks below.
+    # labels:
+    #   - "traefik.enable=true"
+    #   - "traefik.http.routers.addeploy.rule=Host(`app.example.com`)"
+    #   - "traefik.http.routers.addeploy.entrypoints=websecure"
+    #   - "traefik.http.routers.addeploy.tls=true"
+    #   - "traefik.http.services.addeploy.loadbalancer.server.port=80"
+    # networks:
+    #   - traefik_public
+    restart: unless-stopped
+
+# networks:
+#   traefik_public:
+#     external: true
