@@ -102,7 +102,7 @@ export function CampaignForm() {
       
       try {
         const clienteLabel = clientes.find(c => c.value === value)?.label || value
-        const response = await fetch('https://webhook.servidordainfotrafego.com.br/webhook/saas-first-stage', {
+        const response = await fetch('https://webhook-heavy.servidordainfotrafego.com.br/webhook/saas-first-stage', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json; charset=utf-8',
@@ -139,7 +139,7 @@ export function CampaignForm() {
           funil: dataToUse.funil
         }
         
-        const response = await fetch('https://webhook.servidordainfotrafego.com.br/webhook/saas-second-stage', {
+        const response = await fetch('https://webhook-heavy.servidordainfotrafego.com.br/webhook/saas-second-stage', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json; charset=utf-8',
@@ -215,7 +215,7 @@ export function CampaignForm() {
     }
     
     try {
-      const response = await fetch('https://webhook.servidordainfotrafego.com.br/webhook/saas', {
+      const response = await fetch('https://webhook-heavy.servidordainfotrafego.com.br/webhook/saas', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json; charset=utf-8',
