@@ -13,6 +13,7 @@ interface CampaignData {
   objetivo_conversao: string
   tipo_orcamento: string
   verba_diaria: string
+  posicionamento: string
   link_drive_criativos: string
   link_documento_legendas: string
   link_redirecionamento: string
@@ -58,6 +59,12 @@ const tiposOrcamento = [
   { value: "cbo", label: "CBO" }
 ]
 
+const posicionamentos = [
+  { value: "automatico", label: "Automático" },
+  { value: "feed", label: "Feed" },
+  { value: "stories", label: "Stories" }
+]
+
 const clientes = [
   { value: "carv-group", label: "Carv Group" },
   { value: "cristina-florentino", label: "Cristina Florentino" },
@@ -76,6 +83,7 @@ export function CampaignForm() {
     objetivo_conversao: "",
     tipo_orcamento: "",
     verba_diaria: "",
+    posicionamento: "",
     link_drive_criativos: "",
     link_documento_legendas: "",
     link_redirecionamento: "",
@@ -172,7 +180,7 @@ export function CampaignForm() {
     if (currentStage !== 3) return
     
     // Validate required fields for final stage
-    let requiredFields = ['objetivo_campanha', 'objetivo_conversao', 'tipo_orcamento', 'verba_diaria', 'link_drive_criativos', 'link_documento_legendas']
+    let requiredFields = ['objetivo_campanha', 'objetivo_conversao', 'tipo_orcamento', 'posicionamento', 'verba_diaria', 'link_drive_criativos', 'link_documento_legendas']
     
     // Add link_redirecionamento as required if objetivo_conversao is compras or lead
     if (formData.objetivo_conversao === 'compras' || formData.objetivo_conversao === 'lead') {
@@ -204,6 +212,7 @@ export function CampaignForm() {
       objetivo_campanha: objetivosCampanha.find(o => o.value === formData.objetivo_campanha)?.label || formData.objetivo_campanha,
       objetivo_conversao: objetivosConversao.find(o => o.value === formData.objetivo_conversao)?.label || formData.objetivo_conversao,
       tipo_orcamento: tiposOrcamento.find(t => t.value === formData.tipo_orcamento)?.label || formData.tipo_orcamento,
+      posicionamento: posicionamentos.find(p => p.value === formData.posicionamento)?.label || formData.posicionamento,
       verba_diaria: formData.verba_diaria,
       link_drive_criativos: formData.link_drive_criativos,
       link_documento_legendas: formData.link_documento_legendas,
@@ -241,6 +250,7 @@ export function CampaignForm() {
             objetivo_conversao: "",
             tipo_orcamento: "",
             verba_diaria: "",
+            posicionamento: "",
             link_drive_criativos: "",
             link_documento_legendas: "",
             link_redirecionamento: "",
@@ -448,6 +458,30 @@ export function CampaignForm() {
               </Select>
             </div>
 
+            {/* Posicionamento */}
+            <div className="space-y-2">
+              <Label htmlFor="posicionamento" className="flex items-center gap-2">
+                <Target className="w-4 h-4 text-automation-blue" />
+                Posicionamento *
+              </Label>
+              <Select 
+                value={formData.posicionamento} 
+                onValueChange={(value) => updateField('posicionamento', value)}
+                disabled={currentStage < 3}
+              >
+                <SelectTrigger>
+                  <SelectValue placeholder="Selecione o posicionamento" />
+                </SelectTrigger>
+                <SelectContent>
+                  {posicionamentos.map((posicionamento) => (
+                    <SelectItem key={posicionamento.value} value={posicionamento.value}>
+                      {posicionamento.label}
+                    </SelectItem>
+                  ))}
+                </SelectContent>
+              </Select>
+            </div>
+
             {/* Verba diária */}
             <div className="space-y-2">
               <Label htmlFor="verba_diaria" className="flex items-center gap-2">
@@ -467,7 +501,12 @@ export function CampaignForm() {
           <div className="space-y-2">
             <Label htmlFor="link_drive_criativos" className="flex items-center gap-2">
               <Link2 className="w-4 h-4 text-automation-blue" />
-              Link do Drive com Criativos *
+              {formData.posicionamento === 'feed' 
+                ? 'Link do Drive com Criativos para Feed *'
+                : formData.posicionamento === 'stories' 
+                ? 'Link do Drive com Criativos para Stories *' 
+                : 'Link do Drive com Criativos *'
+              }
             </Label>
             <Input
               type="url"
