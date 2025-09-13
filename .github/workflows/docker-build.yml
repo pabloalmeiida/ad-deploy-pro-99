@@ -1,0 +1,23 @@
+name: Build and Push Docker image
+
+on:
+  push:
+    branches:
+      - main   # roda sempre que fizer push na branch main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Log in to GitHub Container Registry
+        run: echo "${{ secrets.GITHUB_TOKEN }}" | docker login ghcr.io -u ${{ github.actor }} --password-stdin
+
+      - name: Build Docker image
+        run: docker build -t ghcr.io/pabloalmeiida/ad-deploy-pro-99:latest .
+
+      - name: Push Docker image
+        run: docker push ghcr.io/pabloalmeiida/ad-deploy-pro-99:latest
