@@ -311,7 +311,7 @@ export function CampaignForm() {
         </div>
         <CardTitle className="text-2xl gradient-text">Criar Nova Campanha</CardTitle>
         <CardDescription className="text-muted-foreground">
-          Preencha os dados abaixo para automatizar a criação da sua campanha no META
+          Preencha os dados abaixo para automatizar a criação da sua campanha no <strong>Meta Ads</strong>
         </CardDescription>
       </CardHeader>
 
