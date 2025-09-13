@@ -62,7 +62,7 @@ const tiposOrcamento = [
 const posicionamentos = [
   { value: "automatico", label: "Automático" },
   { value: "feed", label: "Feed" },
-  { value: "stories", label: "Stories" }
+  { value: "stories", label: "Stories/Reels" }
 ]
 
 const clientes = [
