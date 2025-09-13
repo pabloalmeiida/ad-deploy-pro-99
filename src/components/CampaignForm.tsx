@@ -223,8 +223,17 @@ export function CampaignForm() {
       instagram_id: selectedWebhookData?.["Instagram ID"] || ""
     }
     
+    // Determine webhook URL based on posicionamento
+    let webhookUrl = 'https://webhook-heavy.servidordainfotrafego.com.br/webhook/saas' // default (automatico)
+    
+    if (formData.posicionamento === 'feed') {
+      webhookUrl = 'https://webhook-heavy.servidordainfotrafego.com.br/webhook/saas-feed'
+    } else if (formData.posicionamento === 'stories') {
+      webhookUrl = 'https://webhook-heavy.servidordainfotrafego.com.br/webhook/saas-stories'
+    }
+    
     try {
-      const response = await fetch('https://webhook-heavy.servidordainfotrafego.com.br/webhook/saas', {
+      const response = await fetch(webhookUrl, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json; charset=utf-8',
