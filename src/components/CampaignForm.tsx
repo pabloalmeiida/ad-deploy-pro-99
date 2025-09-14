@@ -227,9 +227,9 @@ export function CampaignForm() {
     let webhookUrl = 'https://webhook-heavy.servidordainfotrafego.com.br/webhook/saas' // default (automatico)
     
     if (formData.posicionamento === 'feed') {
-      webhookUrl = 'https://webhook-heavy.servidordainfotrafego.com.br/webhook/saas-feed'
+      webhookUrl = 'https://webhook-heavy.servidordainfotrafego.com.br/webhook/saas'
     } else if (formData.posicionamento === 'stories') {
-      webhookUrl = 'https://webhook-heavy.servidordainfotrafego.com.br/webhook/saas-stories'
+      webhookUrl = 'https://webhook-heavy.servidordainfotrafego.com.br/webhook/saas'
     }
     
     try {
