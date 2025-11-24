@@ -66,9 +66,9 @@ const posicionamentos = [
 ]
 
 const clientes = [
+  { value: "aba-acessivel", label: "Aba Acessível" },
   { value: "carv-group", label: "Carv Group" },
   { value: "cristina-florentino", label: "Cristina Florentino" },
-  { value: "danilo-diniz", label: "Danilo Diniz" },
   { value: "giulia-molinari", label: "Giulia Molinari" },
   { value: "guilherme-david", label: "Guilherme David" },
   { value: "isabela-dandaro", label: "Isabela Dandaro" },
