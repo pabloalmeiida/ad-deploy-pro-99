@@ -69,9 +69,11 @@ const clientes = [
   { value: "aba-acessivel", label: "Aba Acessível" },
   { value: "carv-group", label: "Carv Group" },
   { value: "cristina-florentino", label: "Cristina Florentino" },
+  { value: "gisele-luvizuto", label: "Gisele Luvizuto" },
   { value: "giulia-molinari", label: "Giulia Molinari" },
   { value: "guilherme-david", label: "Guilherme David" },
   { value: "isabela-dandaro", label: "Isabela Dandaro" },
+  { value: "paula-eskinazi", label: "Paula Eskinazi" },
   { value: "stella-santini", label: "Stella Santini" }
 ]
 
