@@ -72,7 +72,6 @@ const clientes = [
   { value: "giulia-molinari", label: "Giulia Molinari" },
   { value: "guilherme-david", label: "Guilherme David" },
   { value: "isabela-dandaro", label: "Isabela Dandaro" },
-  { value: "politi-academy", label: "Politi Academy" },
   { value: "stella-santini", label: "Stella Santini" }
 ]
 
